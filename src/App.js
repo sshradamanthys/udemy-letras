@@ -1,8 +1,10 @@
+import Form from "./components/Form";
+
 function App() {
   return (
-    <div>
-      <h1>Letras</h1>
-    </div>
+    <>
+      <Form />
+    </>
   );
 }
 

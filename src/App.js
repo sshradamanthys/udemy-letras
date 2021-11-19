@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Form from "./components/Form";
+import Lyrics from "./components/Lyrics";
 
 function App() {
   const [qLyrics, setQLyrics] = useState({});
@@ -24,10 +25,19 @@ function App() {
     fetchAPI();
   }, [qLyrics]);
 
-  console.log(lyrics);
   return (
     <>
       <Form setQLyrics={setQLyrics} />
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-md-6">
+            <h2>Bio</h2>
+          </div>
+          <div className="col-md-6">
+            <Lyrics lyrics={lyrics} />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,9 +1,38 @@
+import { useState } from "react";
+
 const Form = () => {
+  const [query, setQuery] = useState({
+    artist: "",
+    song: "",
+  });
+
+  const [error, setError] = useState(false);
+
+  const handleChange = (e) => {
+    setQuery({ ...query, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (artist.trim() || song.trim()) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+  };
+
+  const { artist, song } = query;
+  console.log(error);
+
   return (
     <div className="bg-info">
       <div className="container">
         <div className="row">
-          <form className="col card text-white bg-transparent mb-5 pt-5 pb-2">
+          <form
+            className="col card text-white bg-transparent mb-5 pt-5 pb-2"
+            onSubmit={handleSubmit}
+          >
             <fieldset>
               <legend className="text-center">Buscador Letras Canciones</legend>
               <div className="row">
@@ -13,8 +42,10 @@ const Form = () => {
                     <input
                       type="text"
                       className="form-control"
-                      name="artista"
+                      name="artist"
                       placeholder="Nombre Artista"
+                      value={artist}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -24,8 +55,10 @@ const Form = () => {
                     <input
                       type="text"
                       className="form-control"
-                      name="cancion"
+                      name="song"
                       placeholder="Nombre Canción"
+                      value={song}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>

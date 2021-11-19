@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = () => {
+const Form = ({ setQLyrics }) => {
   const [query, setQuery] = useState({
     artist: "",
     song: "",
@@ -14,19 +14,25 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (artist.trim() || song.trim()) {
+    if (artist.trim() === "" || song.trim() === "") {
       setError(true);
       return;
     }
+
+    setQLyrics(query);
 
     setError(false);
   };
 
   const { artist, song } = query;
-  console.log(error);
 
   return (
     <div className="bg-info">
+      {error ? (
+        <p className="alert alert-danger text-center p-2">
+          Todos los campos son obligatorios
+        </p>
+      ) : null}
       <div className="container">
         <div className="row">
           <form

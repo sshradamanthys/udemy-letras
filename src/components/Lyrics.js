@@ -3,7 +3,7 @@ const Lyrics = ({ lyrics }) => {
   return (
     <>
       <h2>Letra</h2>
-      <p style={{ whiteSpace: "pre-line" }}>{lyrics}</p>
+      <p className="letra">{lyrics}</p>
     </>
   );
 };
